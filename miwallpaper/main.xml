@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MiWallpaper version="2" frameRate="30" screenWidth="1080" type="awesome" compiler="true">
+    <Plugin name="blok_sfx3bs4s" src="particle" visibility="1" blokName="粒子效果1" blokId="sfx3bs4s" blokTag="_miwallpaper_miwallpaper" blokIsLock="false" x="0" y="0" w="1080" h="2400" rotation="0" imgSrc="particle_src/sfx3bs4s_img.jpg" particleSrc="particle_src/sfx3bs4s_particle.png" particleP="8" particleV="true" adaptationType="1">
+        <Animation/>
+        <Emit/>
+    </Plugin>
+</MiWallpaper>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Lockscreen version="2" frameRate="60" displayDesktop="false" screenWidth="1080" compiler="true">
+    <ExternalCommands>
+        <Trigger action="resume">
+            <!-- 从负一屏或相机界面后界面退出后图标界面复位 -->
+            <VariableCommand name="move_x1_vg8sh8" expression="0"/>
+            <VariableCommand name="move_x2_vg8sh8" expression="0"/>
+            <AnimationCommand target="move_go_vg8sh8" command="play"/>
+            <AnimationCommand target="unlock_back_vg8sh8" command="play(0,0)"/>
+        </Trigger>
+        <Trigger action="pause">
+            <AnimationCommand target="unlock_back_vg8sh8" command="play(0,0)"/>
+        </Trigger>
+    </ExternalCommands>
+    <Group name="blok_b3zc3x7i" visibility="1">
+        <!-- 系统静态壁纸	SystemWallpaper -->
+        <Button x="0" y="0" w="1080" h="2400"/>
+        <Wallpaper x="0" y="0" w="1080" h="2400" rotation="0" alpha="255"/>
+    </Group>
+    <Group name="blok_fppel76d" visibility="1" x="0" y="0" rotation="0">
+        <FramerateController name="framerate_ani_vg8sh8" initPause="true" loop="false">
+            <ControlPoint frameRate="60" time="0"/>
+            <ControlPoint frameRate="60" time="2000"/>
+            <ControlPoint frameRate="30" time="2001"/>
+        </FramerateController>
+        <Button x="0" y="0" w="1080" h="#screen_height">
+            <Triggers>
+                <Trigger action="down,up,cancel">
+                    <AnimationCommand target="framerate_ani_vg8sh8" command="play"/>
+                </Trigger>
+                <Trigger action="move">
+                    <AnimationCommand target="framerate_ani_vg8sh8" command="play" condition="#frame_rate{55"/>
+                </Trigger>
+            </Triggers>
+        </Button>
+        <Rectangle x="0" y="0" w="1080" h="#screen_height" fillColor="#000000" alpha="#move_x_vg8sh8*100/1080"/>
+        <!-- 快捷功能图标 -->
+        <Group x="#move_x_vg8sh8" y="#screen_height-100" alpha="178+#move_y_vg8sh8*5">
+            <Image name="left_icon_vg8sh8" x="100" y="0" align="center" alignV="center" src="defaultScreen_src/fppel76d_left_icon.png" centerX="#left_icon_vg8sh8.bmp_width/2" centerY="#left_icon_vg8sh8.bmp_height/2" scale="(1-#move_y_vg8sh8/300)"/>
+            <Image name="right_icon_vg8sh8" x="1080-100" y="0" align="center" alignV="center" src="defaultScreen_src/fppel76d_right_icon.png" centerX="#right_icon_vg8sh8.bmp_width/2" centerY="#right_icon_vg8sh8.bmp_height/2" scale="1/((1-#__pluginWallpaper_move/60)*(1-#move_y_vg8sh8/300))"/>
+        </Group>
+        <!-- 右相机页 -->
+        <Rectangle x="1080+#move_x_vg8sh8" w="1080" h="#screen_height" fillColor="#000000" visibility="#move_x_vg8sh8{0"/>
+        <Image x="1080+#move_x_vg8sh8" y="#screen_height+(140*(#screen_height==1920))" alignV="bottom" src="defaultScreen_src/cam_bg_0.png" visibility="#move_x_vg8sh8{0"/>
+        <!-- 左右滑屏按钮 -->
+        <Group visibility="#move_y_vg8sh8==0**#notice_down==0">
+            <!-- 左右移动变量，预留50像素判断是向左右滑动还是上下滑动，当滑动距离超过50时#move_x变量才不为0-->
+            <Var name="move_x_vg8sh8" expression="max(min(ifelse(#touch_x}#touch_begin_x,max(#touch_move_vg8sh8-50,0),min(#touch_move_vg8sh8+50,0))+#move_go_vg8sh8,1080),-1080)"/>
+            <Var name="move_go_vg8sh8">
+                <VariableAnimation initPause="true" loop="false">
+                    <Item value="#move_x1_vg8sh8" time="0" easeType="QuadEaseOut"/>
+                    <Item value="#move_x2_vg8sh8" time="260"/>
+                </VariableAnimation>
+            </Var>
+            <Button w="1080" h="#screen_height">
+                <Triggers>
+                    <Trigger action="move">
+                        <VariableCommand name="touch_move_vg8sh8" expression="#touch_x-#touch_begin_x"/>
+                    </Trigger>
+                    <!-- 判断回弹 -->
+                    <Trigger action="up,cancel">
+                        <VariableCommand name="move_x1_vg8sh8" expression="#move_x2_vg8sh8+ifelse(#touch_x}#touch_begin_x,max(#touch_move_vg8sh8-50,0),min(#touch_move_vg8sh8+50,0))"/>
+                        <VariableCommand name="move_x2_vg8sh8" expression="ifelse(abs(#touch_x-#touch_begin_x)}300,max(min(#move_x2_vg8sh8+ifelse(#touch_x}#touch_begin_x,1,-1)*1080,1080),-1080),#move_x2_vg8sh8)"/>
+                        <AnimationCommand target="move_go_vg8sh8" command="play"/>
+                        <VariableCommand name="touch_move_vg8sh8" expression="0"/>
+                    </Trigger>
+                    <Trigger action="up,cancel" condition="abs(#touch_x-#touch_begin_x)}300">
+                        <!-- 不解锁进入相机界面 -->
+                        <IntentCommand action="android.intent.action.MAIN" package="com.android.camera" class="com.android.camera.Camera" condition="#touch_begin_x-#touch_x}300**#move_x_vg8sh8{0">
+                            <Extra name="ShowCameraWhenLocked" type="boolean" expression="1"/>
+                            <Extra name="StartActivityWhenLocked" type="boolean" expression="1"/>
+                        </IntentCommand>
+                    </Trigger>
+                </Triggers>
+            </Button>
+        </Group>
+        <!-- 解锁 -->
+        <Group visibility="#move_x_vg8sh8==0**#notice_down==0">
+            <!-- 上划位移变量，预留50像素判断是向左右滑动还是向上滑动，当向上滑动距离超过50时#move_y变量才不为0 -->
+            <Var name="move_y_vg8sh8" expression="min(#touch_y-#touch_begin_y+50,0)*#unlock_flag_vg8sh8+#unlock_back_vg8sh8"/>
+            <!-- 上划解锁未到解锁区域时返回弹动动效 -->
+            <Var name="unlock_back_vg8sh8">
+                <VariableAnimation initPause="true" loop="false">
+                    <Item value="0" time="0"/>
+                    <Item value="min(#touch_y-#touch_begin_y+50,0)" time="100" easeType="CubicEaseOut"/>
+                    <Item value="0" time="400"/>
+                    <Item value="min(#touch_y-#touch_begin_y+50,0)" time="500" easeType="CubicEaseOut"/>
+                    <Item value="-#screen_height" time="1499"/>
+                    <Item value="0" time="1500"/>
+                </VariableAnimation>
+            </Var>
+            <Button w="1080" h="#screen_height">
+                <Triggers>
+                    <Trigger action="down">
+                        <VariableCommand name="unlock_flag_vg8sh8" expression="1"/>
+                    </Trigger>
+                    <Trigger action="up,cancel">
+                        <VariableCommand name="unlock_flag_vg8sh8" expression="0"/>
+                        <AnimationCommand target="unlock_back_vg8sh8" command="play(ifelse((#touch_begin_y-#touch_y){=300,100,500),ifelse((#touch_begin_y-#touch_y){=300,400,1500))"/>
+                        <ExternCommand command="unlock" condition="ge(#touch_begin_y-#touch_y,300)"/>
+                    </Trigger>
+                </Triggers>
+            </Button>
+        </Group>
+        <Group x="#move_x_vg8sh8" y="#move_y_vg8sh8" name="container_vg8sh8">
+            <Group name="负一屏_vg8sh8" x="-1080" visibility="#move_x_vg8sh8}0">
+                <Group name="blok_oo9bxqej" visibility="1">
+                    <Button/>
+                </Group>
+            </Group>
+            <Group name="正一屏_vg8sh8" x="0" visibility="#move_x_vg8sh8{1080**#move_x_vg8sh8}-1080">
+                <Group name="blok_j1jxz3l9" visibility="1">
+                    <Button/>
+                </Group>
+            </Group>
+        </Group>
+    </Group>
+    <Group name="blok_9w3cqgqy" visibility="1">
+        <Var name="w_s6wm8r" type="number" expression="520"/>
+        <Var name="h_s6wm8r" type="number" expression="357"/>
+        <Var name="scaleX_s6wm8r" type="number" expression="max(0,520/#w_s6wm8r)" const="true"/>
+        <Var name="scaleY_s6wm8r" type="number" expression="max(0,357/#h_s6wm8r)" const="true"/>
+        <Group x="536" y="352" alpha="255" rotation="0" scaleX="#scaleX_s6wm8r" scaleY="#scaleY_s6wm8r">
+            <!-- maml-render 字体跟手机有差别 -->
+            <Button w="520-50*#scaleX_s6wm8r" h="357" align="center"/>
+            <DateTime name="time1_s6wm8r" y="0" align="center" size="210" color="#ffffffff" formatExp="ifelse(#time_format,'HH:mm','hh:mm')" fontFamily="mitype-normal"/>
+            <DateTime y="240" align="center" size="40" color="#ffffffff" formatExp="ifelse(#time_format,'M月d日 EEEE','M月d日 Eaa')" bold="true"/>
+            <DateTime y="305" align="center" size="40" color="#ffffffff" format="YY年,N月e" bold="true"/>
+        </Group>
+    </Group>
+</Lockscreen>

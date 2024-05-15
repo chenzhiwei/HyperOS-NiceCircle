@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Icon version="2" width="168" height="168" screenWidth="1080" resDensity="480" useVariableUpdater="DateTime.Minute" compiler="true">
+    <Group name="blok_sjbx15wv" visibility="1">
+        <!-- IconCalendar3	数字中文星期	日历图标 1 -->
+        <!-- 缩放 -->
+        <Var name="w_5rhyea" type="number" expression="168"/>
+        <Var name="h_5rhyea" type="number" expression="168"/>
+        <Var name="scaleX_5rhyea" type="number" expression="max(0,168/#w_5rhyea)" const="true"/>
+        <Var name="scaleY_5rhyea" type="number" expression="max(0,168/#h_5rhyea)" const="true"/>
+        <Button x="0" y="0" w="168" h="168"/>
+        <Group x="0" y="0" scaleX="#scaleX_5rhyea" scaleY="#scaleY_5rhyea" rotation="0">
+            <Image x="#w_5rhyea/2" y="#h_5rhyea/2" align="center" alignV="center" src="iconCalendar3_src/sjbx15wv_icon_bg.png"/>
+            <DateTime x="#w_5rhyea/2" y="46" align="center" alignV="center" color="#ffffffff" size="0" format="EEEE" alpha="168" bold="true"/>
+            <Text x="#w_5rhyea/2" y="84" align="center" alignV="center" color="#ff0099ff" size="42" textExp="#date"/>
+        </Group>
+    </Group>
+</Icon>

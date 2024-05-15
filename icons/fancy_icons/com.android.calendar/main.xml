@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Icon version="2" width="168" height="168" screenWidth="1080" resDensity="480" useVariableUpdater="DateTime.Minute" compiler="true">
+    <Plugin name="blok_sjbx15wv" src="iconCalendar3" visibility="1" blokName="数字中文星期图标1" blokId="sjbx15wv" blokTag="_icons_com.android.calendar" blokIsLock="false" x="0" y="0" w="168" h="168" rotation="0" iconBg="iconCalendar3_src/sjbx15wv_icon_bg.png" WeekY="46" WeekSize="0" week_Color="#ffffffff" DateY="84" DateSize="42" date_Color="#ff0099ff">
+        <Animation/>
+        <Emit/>
+    </Plugin>
+</Icon>

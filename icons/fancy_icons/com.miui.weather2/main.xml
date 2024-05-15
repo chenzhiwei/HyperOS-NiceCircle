@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Icon version="2" width="168" height="168" screenWidth="1080" resDensity="480" useVariableUpdater="DateTime.Minute" compiler="true">
+    <Plugin name="blok_k70p34i3" src="iconWeather2" visibility="1" blokName="源图+数字天气1" blokId="k70p34i3" blokTag="_icons_com.miui.weather2" blokIsLock="false" x="0" y="0" w="168" h="168" rotation="0" iconBg="iconWeather2_src/k70p34i3_icon_bg.png" weather_src="iconWeather2_src/k70p34i3_weather.png" wiconX="84" wiconY="65" temperatureX="84" temperatureY="108" color="#ffffffff" size="28">
+        <Animation/>
+        <Emit/>
+    </Plugin>
+</Icon>

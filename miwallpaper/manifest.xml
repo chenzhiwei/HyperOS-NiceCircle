@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MiWallpaper version="2" frameRate="30" screenWidth="1080" type="awesome" compiler="true">
+    <Group name="blok_sfx3bs4s" visibility="1">
+        <Image w="#screen_width" h="#screen_height" src="particle_src/sfx3bs4s_img.jpg"/>
+        <Array count="50" indexName="i">
+            <!-- 随机初始坐标 -->
+            <Var name="particleX_ugyp9b" expression="#screen_width*rand()" type="number[]" index="#i" size="50" const="true"/>
+            <Var name="particleY_ugyp9b" expression="6*rand()+8" type="number[]" index="#i" size="50" const="true"/>
+            <!-- 随机移动速度 -->
+            <Var name="t_ugyp9b" expression="(5*rand()+5)*3000" type="number[]" index="#i" size="50" const="true"/>
+            <!-- 随机半径 -->
+            <Var name="r_ugyp9b" expression="0.4*rand()" type="number[]" index="#i" size="50" const="true"/>
+            <!-- 随机透明度 -->
+            <Var name="alpha_ugyp9b" expression="int(55*rand()+200)" type="number[]" index="#i" size="50" const="true"/>
+            <Image x="#particleX_ugyp9b[#i]" y="#particleY_ugyp9b[#i]*350*#time/#t_ugyp9b[#i]%#screen_height" scale="0.6+#r_ugyp9b[#i]" src="particle_src/sfx3bs4s_particle.png"/>
+        </Array>
+    </Group>
+</MiWallpaper>

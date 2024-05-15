@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Lockscreen version="2" frameRate="60" displayDesktop="false" screenWidth="1080" compiler="true">
+    <Plugin name="blok_b3zc3x7i" src="systemWallpaper" visibility="1" blokName="系统静态壁纸1" blokId="b3zc3x7i" blokTag="_lockscreen_wallpaper" blokIsLock="false" x="0" y="0" w="1080" h="2400" rotation="0" alpha="255" adaptationType="0">
+        <Animation/>
+        <Emit/>
+    </Plugin>
+    <Plugin name="blok_fppel76d" src="defaultScreen" visibility="1" blokName="解锁框架1" blokId="fppel76d" blokTag="container" blokIsLock="false" x="0" y="0" w="1080" h="2400" rotation="0" left_icon_src="defaultScreen_src/fppel76d_left_icon.png" right_icon_src="defaultScreen_src/fppel76d_right_icon.png" bottom_icon_margin="100" bottomIcon_alpha="178" touchable="true" unlock="true" leftBlack="true">
+        <Animation/>
+        <Emit/>
+        <Slot>
+            <Plugin name="blok_oo9bxqej" src="mgroup" visibility="1" blokName="负一屏" blokEditable="false" blokId="oo9bxqej" blokTag="container" blokIsLock="false" x="-1080" y="0" w="200" h="200" rotation="0" align="left" alignV="top" alpha="255" pivotX="0" pivotY="0" scaleX="1" scaleY="1" parseIgnore="true">
+                <Animation/>
+                <Emit/>
+            </Plugin>
+        </Slot>
+        <Slot>
+            <Plugin name="blok_j1jxz3l9" src="mgroup" visibility="1" blokName="正一屏" blokEditable="false" blokId="j1jxz3l9" blokTag="container" blokIsLock="false" x="0" y="0" w="200" h="200" rotation="0" align="left" alignV="top" alpha="255" pivotX="0" pivotY="0" scaleX="1" scaleY="1" parseIgnore="true">
+                <Animation/>
+                <Emit/>
+            </Plugin>
+        </Slot>
+    </Plugin>
+    <Plugin name="blok_9w3cqgqy" src="numClock" visibility="1" blokName="横向数字时钟1" blokId="9w3cqgqy" blokTag="_lockscreen_clock" blokIsLock="false" x="536" y="352" w="520" h="357" rotation="0" alpha="255" timeFont="mitype-normal" color="#ffffffff" align="center">
+        <Animation/>
+        <Emit/>
+    </Plugin>
+</Lockscreen>

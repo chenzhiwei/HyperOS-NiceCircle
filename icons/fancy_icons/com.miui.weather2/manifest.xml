@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Icon version="2" width="168" height="168" screenWidth="1080" resDensity="480" useVariableUpdater="DateTime.Minute" compiler="true">
+    <VariableBinders>
+        <ContentProviderBinder uri="content://weather/actualWeatherData/1" columns="weather_type,temperature" countName="hasweather">
+            <Variable name="weather_temperature_afewyo" type="number" column="temperature"/>
+            <Variable name="weather_id_afewyo" type="number" column="weather_type"/>
+            <Trigger>
+                <VariableCommand name="weather_id_afewyo" expression="ifelse(#weather_id_afewyo}25||#weather_id_afewyo{0,0,#weather_id_afewyo}=4**#weather_id_afewyo{=6||#weather_id_afewyo}=8**#weather_id_afewyo{=11||#weather_id_afewyo==25,4,#weather_id_afewyo}=13**#weather_id_afewyo{=17,13,#weather_id_afewyo}=18**#weather_id_afewyo{=21||#weather_id_afewyo==23,18,#weather_id_afewyo)"/>
+            </Trigger>
+        </ContentProviderBinder>
+    </VariableBinders>
+    <Group name="blok_k70p34i3" visibility="1">
+        <!-- IconWeather2	源图+数字天气 -->
+        <!-- 缩放 -->
+        <Var name="w_afewyo" type="number" expression="168"/>
+        <Var name="h_afewyo" type="number" expression="168"/>
+        <Var name="scaleX_afewyo" type="number" expression="max(0,168/#w_afewyo)" const="true"/>
+        <Var name="scaleY_afewyo" type="number" expression="max(0,168/#h_afewyo)" const="true"/>
+        <Button x="0" y="0" w="168" h="168"/>
+        <Group x="0" y="0" scaleX="#scaleX_afewyo" scaleY="#scaleY_afewyo" rotation="0">
+            <Image x="#w_afewyo/2" y="#h_afewyo/2" src="iconWeather2_src/k70p34i3_icon_bg.png" align="center" alignV="center"/>
+            <Image x="84" y="65" src="iconWeather2_src/k70p34i3_weather.png" align="center" alignV="center" srcid="#weather_id_afewyo"/>
+            <Text x="84" y="108" align="center" color="#ffffffff" size="28" textExp="#weather_temperature_afewyo+'°'"/>
+        </Group>
+    </Group>
+</Icon>

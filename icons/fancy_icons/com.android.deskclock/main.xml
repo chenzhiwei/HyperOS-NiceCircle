@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Icon version="2" width="168" height="168" screenWidth="1080" resDensity="480" useVariableUpdater="DateTime.Minute" compiler="true">
+    <Plugin name="blok_8ip204me" src="iconClock" visibility="1" blokName="表盘时钟图标1" blokId="8ip204me" blokTag="_icons_com.android.deskclock" blokIsLock="false" x="0" y="0" w="168" h="168" rotation="0" icon_bg="iconClock_src/8ip204me_icon_bg.png" hour_color="#ffeadcdc" minute_color="#ffeadcdc" hour_height="46" minute_height="66">
+        <Animation/>
+        <Emit/>
+    </Plugin>
+</Icon>

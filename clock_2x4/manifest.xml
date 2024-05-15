@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Clock version="2" frameRate="30" type="awesome" useVariableUpdater="DateTime.Minute" screenWidth="1080" resDensity="480" scaleByDensity="false" compiler="true">
+    <Group name="blok_vp13td14" visibility="1">
+        <Var name="color_time_qqz6t4" type="string" expression="ifelse(#applied_light_wallpaper,'#ff000000','#fff0f0f0')"/>
+        <Var name="date_time_qqz6t4" expression="'M月d日 EEEE'" type="string"/>
+        <Var name="date_time_12_qqz6t4" expression="'M月d日 Eaa'" type="string"/>
+        <Var name="date_lunar_qqz6t4" expression="'YY年 NNNN'" type="string"/>
+        <Var name="w_qqz6t4" type="number" expression="520"/>
+        <Var name="h_qqz6t4" type="number" expression="357"/>
+        <Var name="scaleX_qqz6t4" type="number" expression="max(0,520/#w_qqz6t4)" const="true"/>
+        <Var name="scaleY_qqz6t4" type="number" expression="max(0,357/#h_qqz6t4)" const="true"/>
+        <!-- 屏蔽 -->
+        <Button name="clock_button"/>
+        <Button x="237" y="79" w="520" h="357"/>
+        <Group x="237" y="79" scaleX="#scaleX_qqz6t4" scaleY="#scaleY_qqz6t4" rotation="0" alpha="ifelse(#applied_light_wallpaper,178,255)">
+            <!-- 时间 -->
+            <DateTime x="#w_qqz6t4/2" y="30-20" align="center" size="190" color="@color_time_qqz6t4" formatExp="ifelse(#time_format,'HH:mm','hh:mm')" alpha="ifelse(#applied_light_wallpaper,178,255)" fontFamily="mitype-normal"/>
+            <!-- 日期 -->
+            <DateTime x="#w_qqz6t4/2" y="235" align="center" size="35" color="@color_time_qqz6t4" formatExp="ifelse(#time_format,@date_time_qqz6t4,@date_time_12_qqz6t4)"/>
+            <!-- 阴历 -->
+            <DateTime x="#w_qqz6t4/2" y="235+55" align="center" size="35" color="@color_time_qqz6t4" formatExp="@date_lunar_qqz6t4"/>
+        </Group>
+        <!-- 时间按钮 -->
+        <Button x="237+#w_qqz6t4/2*#scaleX_qqz6t4" y="79+(30-20)*#scaleY_qqz6t4" w="520" h="227*#scaleY_qqz6t4" align="center">
+            <Triggers>
+                <Trigger action="up">
+                    <IntentCommand action="android.intent.action.MAIN" package="com.android.deskclock" class="com.android.deskclock.DeskClockTabActivity"/>
+                </Trigger>
+            </Triggers>
+        </Button>
+        <!-- 日历按钮 -->
+        <Button x="237+#w_qqz6t4/2*#scaleX_qqz6t4" y="79+235*#scaleY_qqz6t4" w="520" h="110*#scaleY_qqz6t4" align="center">
+            <Triggers>
+                <Trigger action="up">
+                    <IntentCommand action="android.intent.action.MAIN" package="com.android.calendar" class="com.android.calendar.AllInOneActivity"/>
+                </Trigger>
+            </Triggers>
+        </Button>
+    </Group>
+</Clock>

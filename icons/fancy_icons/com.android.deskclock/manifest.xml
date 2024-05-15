@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Icon version="2" width="168" height="168" screenWidth="1080" resDensity="480" useVariableUpdater="DateTime.Minute" compiler="true">
+    <Group name="blok_8ip204me" visibility="1">
+        <!-- IconClock	表盘时钟图标 -->
+        <!-- 缩放 -->
+        <Var name="w_6t4ujh" type="number" expression="168"/>
+        <Var name="h_6t4ujh" type="number" expression="168"/>
+        <Var name="scaleX_6t4ujh" type="number" expression="max(0,168/#w_6t4ujh)" const="true"/>
+        <Var name="scaleY_6t4ujh" type="number" expression="max(0,168/#h_6t4ujh)" const="true"/>
+        <Button x="0" y="0" w="168" h="168"/>
+        <Group x="0" y="0" scaleX="#scaleX_6t4ujh" scaleY="#scaleY_6t4ujh" rotation="0">
+            <Group x="#w_6t4ujh/2" y="#h_6t4ujh/2">
+                <Image align="center" alignV="center" src="iconClock_src/8ip204me_icon_bg.png"/>
+                <Rectangle name="hand_hour_6t4ujh" w="4" h="46" align="center" alignV="bottom" pivotX="2" pivotY="46" fillColor="#ffeadcdc" rotation="#hour12*30+#minute/2" cornerRadius="2"/>
+                <Rectangle name="hand_minute_6t4ujh" w="2" h="66" align="center" alignV="bottom" pivotX="1" pivotY="66" fillColor="#ffeadcdc" rotation="#time_sys%3600000*0.0001" cornerRadius="1"/>
+            </Group>
+        </Group>
+    </Group>
+</Icon>

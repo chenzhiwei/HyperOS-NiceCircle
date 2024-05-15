@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Clock version="2" frameRate="30" type="awesome" useVariableUpdater="DateTime.Minute" screenWidth="1080" resDensity="480" scaleByDensity="false" compiler="true">
+    <Plugin name="blok_vp13td14" src="clockTextClock" visibility="1" blokName="横向数字时钟1" blokId="vp13td14" blokTag="_clock_2x4_clock_2x4" blokIsLock="false" x="237" y="79" w="520" h="357" rotation="0" time_y="30" date_y="235" time_size="190" date_size="35" timeFont="mitype-normal" light_color="#fff0f0f0" dark_color="#ff000000" time_alpha="255">
+        <Animation/>
+        <Emit/>
+    </Plugin>
+</Clock>
